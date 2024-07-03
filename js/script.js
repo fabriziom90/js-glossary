@@ -80,7 +80,7 @@ const js_row = document.getElementById('js-row');
 // --------------FINE DEFINIZIONE VARIABILI------------------
 
 
-// -------------------LOGICA OPERATIVA------------------------
+// -------------------LOGICA DI VISUALIZZAZIONE------------------------
 // ciclo l'array delle definizioni di git
 for (let i = 0; i < git_defs.length; i++) {
 
@@ -188,6 +188,77 @@ for (let i = 0; i < js_defs.length; i++) {
     //appendo alla riga di js, le colonne create 
     js_row.append(col);
 }
+
+// ---------------FINE LOGICA DI VISUALIZZAZIONE--------------
+
+// --------------------LOGICA OPERATIVA-----------------------
+document.getElementById('git').addEventListener('click', function () {
+
+
+    // se presente la tolgo
+    git_row.classList.remove('d-none');
+
+
+    // aggiungo alle altre righe la classe d-none
+    html_row.classList.add('d-none')
+    css_row.classList.add('d-none')
+    js_row.classList.add('d-none')
+
+});
+
+document.getElementById('html').addEventListener('click', function () {
+
+    // se presente la tolgo
+    html_row.classList.remove('d-none');
+
+
+    // aggiungo alle altre righe la classe d-none
+    git_row.classList.add('d-none')
+    css_row.classList.add('d-none')
+    js_row.classList.add('d-none')
+
+});
+
+document.getElementById('css').addEventListener('click', function () {
+
+    // se presente la tolgo
+    css_row.classList.remove('d-none');
+
+
+    // aggiungo alle altre righe la classe d-none
+    git_row.classList.add('d-none')
+    html_row.classList.add('d-none')
+    js_row.classList.add('d-none')
+
+});
+
+document.getElementById('js').addEventListener('click', function () {
+
+    // se presente la tolgo
+    js_row.classList.remove('d-none');
+
+
+    // aggiungo alle altre righe la classe d-none
+    git_row.classList.add('d-none')
+    css_row.classList.add('d-none')
+    html_row.classList.add('d-none')
+
+});
+
+document.getElementById('all').addEventListener('click', function () {
+
+
+    // se presente la tolgo
+    html_row.classList.remove('d-none');
+
+    // aggiungo alle altre righe la classe d-none
+    git_row.classList.remove('d-none')
+    css_row.classList.remove('d-none')
+    js_row.classList.remove('d-none')
+
+});
+
+
 
 /*<em>
     REGOLE PER I NOMI DELLE VARIABILI <br>
