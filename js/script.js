@@ -61,7 +61,16 @@ let js_defs = [
     "SCOPE DI UNA VARIABILE:Contesto nel quale si può richiamare una determinata variabile.",
     "ITERAZIONE(o ciclata):L'iterazione (o ciclata) è il singolo insieme di operazioni che vengono svolte durante l'esecuzione di un ciclo for. Terminato questo insieme di operazioni, il for fa eseguire questo insieme di operazione nuovamente da capo, facendo così partire una nuova iterazione.",
     "ARRAY(Vettore):Un array è una struttura dati che permette di contenere più valori contemporaneamente al suo interno in posizione l'uno adiacente all'altro.",
-    "INDICE DI UN ARRAY:L'indice di un array è il valore che rappresenta la posizione all'interno dell'array. Gli indici partono sempre da 0 ed arrivano al valore N - 1 (dove N è la lunghezza - numero di elementi lo compongono - dell'array)"
+    "INDICE DI UN ARRAY:L'indice di un array è il valore che rappresenta la posizione all'interno dell'array. Gli indici partono sempre da 0 ed arrivano al valore N - 1 (dove N è la lunghezza - numero di elementi lo compongono - dell'array)",
+    "FUNZIONI:Le funzioni sono porzioni di codice che svolgono una precisa attività/compito all'interno del programma. Servono per evitare ripetizione del codice, migliorare la manutenibilità dello stesso ed isolare una certa porzione di codice al fine di migliorare la leggibilità dello stesso.",
+    "DICHIARAZIONE/DEFINIZIONE DI UNA FUNZIONE:Scrivo la funzione e quello che fa nel codice, in un certo senso avvertendo il programma che esiste questa funzione.",
+    "CHIAMATA DI UNA FUNZIONE:Eseguo la funzione scrivendo all'interno del codice, dove deve essere eseguita, il nome della stessa seguito dalle parentesi ed eventuali parametri.",
+    "PARAMETRO DI UNA FUNZIONE:Il parametro di una funzione è una variabile il cui valore è dato all'invocazione/chiamata della funzione. Il parametro prende il nome di generale o formale quando siamo nella definizione/dichiarazione della funzione. Prende invece il nome di attuale o effettivo quando siamo nell'invocazione/chiamata di una funzione.",
+    "FUNZIONI ANONIME: Funzioni che non hanno un nome. Pertanto, non possono essere richiamate all'interno del codice dove vogliamo ma devono essere eseguite nell'ambito di un particolare evento. Essendo legate a degli eventi, queste funzioni, sono tendenzialmente uniche. Vengono chiamate anche Funzioni di callback. Non avendo un nome, non possono stare al di fuori di eventi.",
+    "THIS:parola chiave che sta ad indicare il contesto in cui ci troviamo. E' un oggetto. Se clicchiamo un pulsante, il contesto è quello del pulsante. Infatti facendo il console.log di this all'interno della funzione di callback dell'evento click vedremo il pulsante che abbiamo cliccato.",
+    "PROGRAMMAZIONE SINCRONA:La programmazione sincrona prevede l'esecuzione di tutti i passaggi uno dopo l'altro in maniera consecutiva",
+    "PROGRAMMAZIONE ASINCRONA:Un tipo programmazione in cui parte del codice prosegue parallelamente a quello principale."
+
 ];
 
 // recupero l'elemento del dom che dovrà contenere le colonne con le definizioni di git
@@ -296,6 +305,24 @@ document.getElementById('all').addEventListener('click', function () {
         1 - il for viene utilizzato se si ha un numero definito di iterazioni da svolgere (non è detto che lo conosciamo!), se abbiamo bisogno di un contatore e se deve essere eseguito per forza.
         2 - il while viene utilizzato se la condizione non dipende da un contatore oppure se non abbiamo un numero definito di iterazioni da svolgere. Potrebbe anche non essere eseguito.
         3 - il do while viene eseguito sicuramente una volta. Per il resto è uguale al while.
+    </code>
+</em>
+<em>
+    <code>
+        Tipologie di funzioni
+        FUNZIONI NOMINATE => Funzioni che hanno un nome specifico,
+    </code>
+</em>
+<em>
+    <code>
+        REGOLE DI SCOPE PER LA VISIBILITA' DELLE VARIABILI
+        Le variabili let e const non possono essere viste al di fuori dei blocchi individuati da istruzioni condizionali (if, else if ecc), cicli (for, while ecc), e funzioni in cui sono state dichiarate.
+        Sia let che const generano errore se le proviamo ad utilizzare prima che vengano dichiarate
+        La variabile var può essere vista al di fuori di un blocco individuato da istruzioni condizioni o cicli in cui è dichiarata, ma non può essere vista al di fuori delle funzioni in cui è dichiarata.
+        La variabile var non genera errore se utilizzata prima della sua dichiarazione, ma sarà semplicemente undefined
+        Le variabili globali hanno i seguenti difetti
+        1 - Potremmo avere difficoltà a capire da dove proviene il valore che contiene;
+        2 - Rompe il concetto di funzione. E' paragonabile ad un virus che infetta una cellula;
     </code>
 </em>
 */
