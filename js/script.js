@@ -1,3 +1,34 @@
+// ----------------- DEFINIZIONE DELLE FUNZIONI ---------------
+function showDefinition(definitions, dom_element) {
+    definitions.forEach((elem) => {
+
+        // creo l'elemento colonna da inserire nel dom
+        let col = document.createElement('div');
+
+        // aggiungo le classi all'elemento colonna
+        col.classList.add('col-12', 'col-md-6', 'col-lg-4');
+
+        // creo l'elemento card
+        let card = document.createElement('card');
+        // gli aggiungo le classi
+        card.classList.add('card', 'p-3', 'rounded-0', 'bg-bluebool', 'text-white', 'm-2', 'min-height-300');
+
+        // destrutturazione
+        let { name, description } = elem
+
+        // inserisco come html il titolo ed il testo della voce del glossario
+        card.innerHTML += `<h3 class="text-center">${name}</h3><p>${description}</p>`;
+
+        // appendo alla colonna l'elemento card creato
+        col.append(card);
+
+        //appendo alla riga di git, le colonne create 
+        dom_element.append(col);
+
+    })
+
+}
+
 // ---------------DEFINIZIONE DELLE VARIABILI-------------------
 let git_defs = [
     {
@@ -277,38 +308,9 @@ const js_row = document.getElementById('js-row');
 
 
 // -------------------LOGICA DI VISUALIZZAZIONE------------------------
-// ciclo l'array delle definizioni di git
-for (let i = 0; i < git_defs.length; i++) {
+//chiamo la funzione per mostrare le definizioni a video
+showDefinition(git_defs, git_row);
 
-    // creo l'elemento colonna da inserire nel dom
-    let col = document.createElement('div');
-
-    // aggiungo le classi all'elemento colonna
-    col.classList.add('col-12', 'col-md-6', 'col-lg-4');
-
-    // creo l'elemento card
-    let card = document.createElement('card');
-    // gli aggiungo le classi
-    card.classList.add('card', 'p-3', 'rounded-0', 'bg-bluebool', 'text-white', 'm-2', 'min-height-300');
-
-    // la stringa deve essere divisa in due parti: titolo e definizione
-    let array_def = git_defs[i].split(':');
-
-    // inserisco come html il titolo ed il testo della voce del glossario
-    card.innerHTML += `<h3 class="text-center">${array_def[0]}</h3><p>${array_def[1]}</p>`;
-
-    // appendo alla colonna l'elemento card creato
-    col.append(card);
-
-    //appendo alla riga di git, le colonne create 
-    git_row.append(col);
-}
-
-git_defs.forEach((element, index, array) => {
-    console.log(element);
-    console.log(index);
-    console.log(array);
-});
 
 // ciclo l'array delle definizioni di html
 for (let i = 0; i < html_defs.length; i++) {
