@@ -122,3 +122,8 @@ li::before {
 .min-height-300 {
     min-height: 300px;
 }
+
+.definitions {
+    border-bottom: 1px solid #001533;
+    padding-bottom: 50px;
+}
