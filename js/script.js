@@ -1,5 +1,6 @@
 // ----------------- DEFINIZIONE DELLE FUNZIONI ---------------
 function showDefinition(definitions, dom_element) {
+    console.log(definitions);
     definitions.forEach((elem) => {
 
         // creo l'elemento colonna da inserire nel dom
@@ -33,7 +34,7 @@ function showDefinition(definitions, dom_element) {
 let git_defs = [
     {
         name: "GIT",
-        description: "Sistema di versioname:nto che ci permette di tenere traccia di tutte le modifiche che avvengono all'interno di un progetto, permettendo di avere più versioni dello stesso."
+        description: "Sistema di versionamento che ci permette di tenere traccia di tutte le modifiche che avvengono all'interno di un progetto, permettendo di avere più versioni dello stesso."
     },
     {
         name: "REPOSITORY",
@@ -303,95 +304,36 @@ const css_row = document.getElementById('css-row');
 // recupero l'elemento del dom che dovrà contenere le colonne con le definizioni di js
 const js_row = document.getElementById('js-row');
 
+// CREO UN ARRAY DI OGGETTI CON LE DEFINIZIONI E L'ELEMENTO DEL DOM CHE LE DEVE CONTENERE
+let doms_array = [
+    {
+        dom: git_row,
+        defs: git_defs,
+    },
+    {
+        dom: html_row,
+        defs: html_defs,
+    },
+    {
+        dom: css_row,
+        defs: css_defs,
+    },
+    {
+        dom: js_row,
+        defs: js_defs,
+    }
+];
+
 
 // --------------FINE DEFINIZIONE VARIABILI------------------
 
 
 // -------------------LOGICA DI VISUALIZZAZIONE------------------------
 //chiamo la funzione per mostrare le definizioni a video
-showDefinition(git_defs, git_row);
+doms_array.forEach((elem) => {
+    showDefinition(elem.defs, elem.dom);
+})
 
-
-// ciclo l'array delle definizioni di html
-for (let i = 0; i < html_defs.length; i++) {
-
-    // creo l'elemento colonna da inserire nel dom
-    let col = document.createElement('div');
-
-    // aggiungo le classi all'elemento colonna
-    col.classList.add('col-12', 'col-md-6', 'col-lg-4');
-
-    // creo l'elemento card
-    let card = document.createElement('card');
-    // gli aggiungo le classi
-    card.classList.add('card', 'p-3', 'rounded-0', 'bg-bluebool', 'text-white', 'm-2', 'min-height-300');
-
-    // la stringa deve essere divisa in due parti: titolo e definizione
-    let array_def = html_defs[i].split(':');
-
-    // inserisco come html il titolo ed il testo della voce del glossario
-    card.innerHTML += `<h3 class="text-center">${array_def[0]}</h3><p>${array_def[1]}</p>`;
-
-    // appendo alla colonna l'elemento card creato
-    col.append(card);
-
-    //appendo alla riga di html, le colonne create 
-    html_row.append(col);
-}
-
-// ciclo l'array delle definizioni di css
-for (let i = 0; i < css_defs.length; i++) {
-
-    // creo l'elemento colonna da inserire nel dom
-    let col = document.createElement('div');
-
-    // aggiungo le classi all'elemento colonna
-    col.classList.add('col-12', 'col-md-6', 'col-lg-4');
-
-    // creo l'elemento card
-    let card = document.createElement('card');
-    // gli aggiungo le classi
-    card.classList.add('card', 'p-3', 'rounded-0', 'bg-bluebool', 'text-white', 'm-2', 'min-height-300');
-
-    // la stringa deve essere divisa in due parti: titolo e definizione
-    let array_def = css_defs[i].split(':');
-
-    // inserisco come css il titolo ed il testo della voce del glossario
-    card.innerHTML += `<h3 class="text-center">${array_def[0]}</h3><p>${array_def[1]}</p>`;
-
-    // appendo alla colonna l'elemento card creato
-    col.append(card);
-
-    //appendo alla riga di css, le colonne create 
-    css_row.append(col);
-}
-
-// ciclo l'array delle definizioni di js
-for (let i = 0; i < js_defs.length; i++) {
-
-    // creo l'elemento colonna da inserire nel dom
-    let col = document.createElement('div');
-
-    // aggiungo le classi all'elemento colonna
-    col.classList.add('col-12', 'col-md-6', 'col-lg-4');
-
-    // creo l'elemento card
-    let card = document.createElement('card');
-    // gli aggiungo le classi
-    card.classList.add('card', 'p-3', 'rounded-0', 'bg-bluebool', 'text-white', 'm-2', 'min-height-300');
-
-    // la stringa deve essere divisa in due parti: titolo e definizione
-    let array_def = js_defs[i].split(':');
-
-    // inserisco come js il titolo ed il testo della voce del glossario
-    card.innerHTML += `<h3 class="text-center">${array_def[0]}</h3><p>${array_def[1]}</p>`;
-
-    // appendo alla colonna l'elemento card creato
-    col.append(card);
-
-    //appendo alla riga di js, le colonne create 
-    js_row.append(col);
-}
 
 // ---------------FINE LOGICA DI VISUALIZZAZIONE--------------
 
