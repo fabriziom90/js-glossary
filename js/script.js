@@ -53,7 +53,6 @@ function fakeLoader(row) {
     }, 2500);
 }
 
-
 // ---------------DEFINIZIONE DELLE VARIABILI-------------------
 // recupero l'elemento del dom che dovrà contenere le colonne con le definizioni di git
 const git_row = document.getElementById('git-row');
@@ -66,6 +65,9 @@ const css_row = document.getElementById('css-row');
 
 // recupero l'elemento del dom che dovrà contenere le colonne con le definizioni di js
 const js_row = document.getElementById('js-row');
+
+// recupero il pulsante che serve per tornare in alto alla pagina
+const btn = document.querySelector('.to-top-button');
 
 // array con le definizioni. L'array è un array di oggetti, ogni oggetto ha tre proprietà: 
 // 1 - type: ambito delle definizioni
@@ -358,37 +360,33 @@ definitions.forEach((elem, index) => {
 
 // --------------------LOGICA OPERATIVA-----------------------
 document.getElementById('git').addEventListener('click', function () {
-
     fakeLoader(git_row);
-
 });
 
 document.getElementById('html').addEventListener('click', function () {
-
     fakeLoader(html_row);
-
 });
 
 document.getElementById('css').addEventListener('click', function () {
-
     fakeLoader(css_row);
-
 });
 
 document.getElementById('js').addEventListener('click', function () {
-
     fakeLoader(js_row);
-
 });
 
 document.getElementById('all').addEventListener('click', function () {
-
 
     // se presente rimuovo la classe d-none da tutte le righe con la classe definitions
     document.querySelectorAll('.definitions').forEach((elem) => {
         elem.classList.remove('d-none');
     })
 
+});
+
+// aggiungo l'evento click al pulsante
+btn.addEventListener('click', function () {
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 });
 
 
