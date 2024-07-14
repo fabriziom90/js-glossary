@@ -127,3 +127,24 @@ li::before {
     border-bottom: 1px solid #001533;
     padding-bottom: 50px;
 }
+
+#loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #00e165;
+    border-bottom-color: #001533;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

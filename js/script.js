@@ -29,6 +29,31 @@ function showDefinition(definitions, dom_element) {
 
 }
 
+// funzione che setta un timeout per il loader
+function fakeLoader(row) {
+    // rimuovo la classe d-none all'elemento loader
+    document.getElementById('loader').classList.remove('d-none');
+
+    // recupero tutte le righe con la classe definitions
+    let definitions = document.querySelectorAll('.definitions');
+
+    // le ciclo per mettere la classe d-none
+    definitions.forEach((elem) => {
+        elem.classList.add('d-none')
+    });
+
+
+    setTimeout(function () {
+        // dopo due secondi e mezzo, aggiungo la classe d-none all'elemento loader e rimuovo la classe d-none alla riga passata
+        document.getElementById('loader').classList.add('d-none');
+        row.classList.remove('d-none');
+
+        // scrollo la pagina in fino all'elemento con id da mostrare una volta tolto il loader
+        location.href = `#${row.id}`
+    }, 2500);
+}
+
+
 // ---------------DEFINIZIONE DELLE VARIABILI-------------------
 // recupero l'elemento del dom che dovrà contenere le colonne con le definizioni di git
 const git_row = document.getElementById('git-row');
@@ -334,68 +359,35 @@ definitions.forEach((elem, index) => {
 // --------------------LOGICA OPERATIVA-----------------------
 document.getElementById('git').addEventListener('click', function () {
 
-
-    // se presente la tolgo
-    git_row.classList.remove('d-none');
-
-
-    // aggiungo alle altre righe la classe d-none
-    html_row.classList.add('d-none')
-    css_row.classList.add('d-none')
-    js_row.classList.add('d-none')
-
+    fakeLoader(git_row);
 
 });
 
 document.getElementById('html').addEventListener('click', function () {
 
-    // se presente la tolgo
-    html_row.classList.remove('d-none');
-
-
-    // aggiungo alle altre righe la classe d-none
-    git_row.classList.add('d-none')
-    css_row.classList.add('d-none')
-    js_row.classList.add('d-none')
+    fakeLoader(html_row);
 
 });
 
 document.getElementById('css').addEventListener('click', function () {
 
-    // se presente la tolgo
-    css_row.classList.remove('d-none');
-
-
-    // aggiungo alle altre righe la classe d-none
-    git_row.classList.add('d-none')
-    html_row.classList.add('d-none')
-    js_row.classList.add('d-none')
+    fakeLoader(css_row);
 
 });
 
 document.getElementById('js').addEventListener('click', function () {
 
-    // se presente la tolgo
-    js_row.classList.remove('d-none');
-
-
-    // aggiungo alle altre righe la classe d-none
-    git_row.classList.add('d-none')
-    css_row.classList.add('d-none')
-    html_row.classList.add('d-none')
+    fakeLoader(js_row);
 
 });
 
 document.getElementById('all').addEventListener('click', function () {
 
 
-    // se presente la tolgo
-    html_row.classList.remove('d-none');
-
-    // aggiungo alle altre righe la classe d-none
-    git_row.classList.remove('d-none')
-    css_row.classList.remove('d-none')
-    js_row.classList.remove('d-none')
+    // se presente rimuovo la classe d-none da tutte le righe con la classe definitions
+    document.querySelectorAll('.definitions').forEach((elem) => {
+        elem.classList.remove('d-none');
+    })
 
 });
 
