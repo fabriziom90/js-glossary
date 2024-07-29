@@ -54,6 +54,9 @@ function fakeLoader(row) {
 }
 
 // ---------------DEFINIZIONE DELLE VARIABILI-------------------
+// recupero l'elemento del dom che dovrà contenere le colonne con le definizioni comuni
+const common_row = document.getElementById('common-row');
+
 // recupero l'elemento del dom che dovrà contenere le colonne con le definizioni di git
 const git_row = document.getElementById('git-row');
 
@@ -66,6 +69,9 @@ const css_row = document.getElementById('css-row');
 // recupero l'elemento del dom che dovrà contenere le colonne con le definizioni di js
 const js_row = document.getElementById('js-row');
 
+// recupero l'elemento del dom che dovrà contenere le colonne con le definizioni di vuejs
+const vue_row = document.getElementById('vue-row');
+
 // recupero il pulsante che serve per tornare in alto alla pagina
 const btn = document.querySelector('.to-top-button');
 
@@ -74,6 +80,59 @@ const btn = document.querySelector('.to-top-button');
 // 2 - dom_elem: elemento del dom in cui andare ad iniettare l'html delle definizioni
 // 3 - defs: array con le definizioni. Ogni definizione è un oggetto composta dal nome della definizione e dalla s
 let definitions = [
+    {
+        type: "common",
+        defs: [
+            {
+                name: "FRAMEWORK",
+                description: "Un framework un insieme di funzionalità, metodi ed anche tecnologie di diverso tipo già pronte all'uso che possono essere utilizzate per realizzare una pagina / sito / applicazione in maniera più rapida e semplice.E' una sorta di intelaiatura su cui realizzare la nostra applicazione / sito.Una volta cominciato a lavorare su questo non si esce."
+            },
+            {
+                name: "LIBRERIA",
+                description: "Una libreria è un insieme di funzionalità, che non è detto che siano collegate tra di loro e che vado ad utilizzare solo al bisogno e solo quella che necessito al momento."
+            },
+            {
+                name: 'SINGLE PAGE APPLICATION',
+                description: "Una Single Page Application (SPA) è un'applicazione che può essere usata su una singola pagina. All'interno di  applicazioni di questo tipo non esistono caricamenti successivo al primo, quello che costruisce la pagina."
+            },
+            {
+                name: "REATTIVITA",
+                description: "La reattività è la capacità di osservare il DOM e di aggiornarlo in tempo reale, senza eseguire caricamenti."
+            },
+            {
+                name: "PROXY",
+                description: "Nella programmazione web, il Proxy è un oggetto che fa da tramite ad un altro oggetto il quale verifica se l'oggetto principale subisce delle modifiche."
+            },
+            {
+                name: "URI",
+                description: "URI (unified resource identifier) è il nome del server che vogliamo contattare."
+            },
+            {
+                name: "XML",
+                description: "XML sta per eXtensible markup language ed è un linguaggio di markup con cui definiamo altri meta linguaggi per passare dei dati."
+            },
+            {
+                name: "JSON",
+                description: "JSON sta per JavaScript Object Notation ed utilizza la notazione ad oggetti per inviare dati"
+            },
+            {
+                name: "API",
+                description: "Le API (Application Programming Interface) è un insieme di operazioni afferenti alla stessa tematica che sono rese disponibili ai programmatori per essere svolte e si richiamano attravero un indirizzo web (se parliamo di programmazione web). E' un termine generico che può essere utilizzato anche in ambiti diversi dalla programmazione web."
+            },
+            {
+                name: "ENDPOINT",
+                description: "L'endpoint è un singolo indirizzo che fa parte di un API ed è colui che viene chiamato direttamente dal client."
+            },
+            {
+                name: "PACKAGE MANAGER",
+                description: "Un package manager è uno strumento che ci permette di installare script ed applicativi vari"
+            },
+            {
+                name: "CLI",
+                description: "CLI è l'acronimo per Command Line Interface ed è una interfaccia grafica. Molto spesso si usa per la creazione di progetti con determinate caratteristiche (es. scaffolding già pronto)"
+            }
+        ]
+    },
     {
         type: "git",
         defs: [
@@ -217,14 +276,7 @@ let definitions = [
                 name: "DESKTOP FIRST",
                 description: "E' una modalità di progettazione delle pagine web in cui si da priorità allo sviluppo desktop.In questa modalità tutto ciò che si trova fuori da media query viene applicato alla risoluzione più grande, quindi oltre al breakpoint più grande impostato nelle media query.Sviluppo le pagine partendo dalle risoluzioni desktop per poi andare a determinare il comportamento delle componenti a risoluzioni più basse, fino ad arrivare a quelle smartphone.Utilizziamo in questo caso <strong> max-width</strong> nei breakpoint."
             },
-            {
-                name: "FRAMEWORK",
-                description: "Un framework un insieme di funzionalità di diverso tipo già pronte all'uso che possono essere utilizzate per realizzare una pagina / sito / applicazione in maniera più rapida e semplice.E' una sorta di intelaiatura su cui realizzare la nostra applicazione / sito.Una volta cominciato a lavorare su questo non si esce."
-            },
-            {
-                name: "LIBRERIA",
-                description: "Una libreria è un insieme di funzionalità, che non è detto che siano collegate tra di loro e che vado ad utilizzare solo al bisogno e solo quella che necessito al momento."
-            }
+
         ]
     },
     {
@@ -336,12 +388,78 @@ let definitions = [
                 description: "Un tipo programmazione in cui parte del codice prosegue parallelamente a quello principale."
             },
             {
-                name: "PROPRIETA' DI UN OGGETT",
+                name: "PROPRIETA' DI UN OGGETTO",
                 description: " La proprietà di un oggetto è una coppia chiave valore in cui la chiave rappresenta il nome della proprietà, il valore invece il suo valore."
             },
             {
                 name: "DESTRUTTURAZIONE",
                 description: "Prendere tutte o solo alcune delle proprietà e dei loro valori di un oggetto per inserirle in delle variabili. Serve quando dobbiamo mostrare o utilizzare i valori di tutte o alcune delle proprietà dell'oggetto (senza cancellarlo) in maniera semplice ed immediata"
+            },
+            {
+                name: "AJAX",
+                description: "Ajax è l'acronimo per Asinchronous Javascript and XML ed è una tecnologia che permette di effettuare chiamate http <strong>asincrone</strong> con javascript."
+            }
+        ]
+    },
+    {
+        type: "vuejs",
+        defs: [
+            {
+                name: "VUEJS",
+                description: "Vuejs è un framework frontend per la realizzazione di SPA (Single Page Application)."
+            },
+            {
+                name: "DIRETTIVE",
+                description: "Sono degli attributi particolari definiti in vuejs che ci permettono di interagire con il DOM.",
+                appendix: [
+                    {
+                        name: "v-model",
+                        description: "Il v-model è la direttiva che ci permette di catturare il valore di un campo input o select ecc per poi utilizzarlo in un secondo momento per svolgere delle operazioni"
+                    },
+                    {
+                        name: "v-bind",
+                        description: "Il v-bind è una direttiva che consente di collegare il valore contenuto in una variabile del data di vuejs con gli attributi standard (class, alt, img, href ecc) dei tag html, permettendo quindi di cambiare valore in base alle scelte dell'utente per esempio"
+                    },
+                    {
+                        name: "v-on",
+                        description: "V-on è la direttiva che ci permette di associare eventi (click, change, ecc) ad operazioni da svolgere o funzioni"
+                    },
+                    {
+                        name: 'v-if',
+                        description: "v-if è la direttiva che ci permette di mostrare o meno un div se la sua condizione è vera. Da notare che se la condizione risulta falsa, il div non esisterà proprio all'interno del documento"
+                    },
+                    {
+                        name: 'v-show',
+                        description: "v-if è la direttiva che ci permette di mostrare o meno un div se la sua condizione è vera. A differenza del v-if, il div esiste all'interno del documento anche se la condizione risulta falsa e avrà impostata la proprietà display: none"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        type: "Vite",
+        defs: [
+            {
+                name: "NODE.js",
+                description: "Node.js è un ambiente di sviluppo open source, cross platform e runtime, sviluppato in javascript e basato sul motore V8 di Chrome"
+            },
+            {
+                name: "Vite",
+                description: "Vite è un tool per la creazione rapida di progetti basati su Vue oppure su altri framework o librerie."
+            },
+            {
+                name: "NPM",
+                description: "NPM (Node Package Manager) è il gestore di pacchetti per Node.js. Ci permette di installare librerie e funzionalità varie",
+                appendix: [
+                    {
+                        name: "npm init",
+                        description: "Inizializza un progetto creando il file package.json. Se è già presente, non serve lanciarlo."
+                    },
+                    {
+                        name: "npm install",
+                        description: "Serve ad installare i pacchetti presenti nel file package.json. In questo modo crea la cartella node_modules all'interno del progetto. Questa cartella conterrà le sottocartelle dei pacchetti installati."
+                    }
+                ]
             }
         ]
     }
